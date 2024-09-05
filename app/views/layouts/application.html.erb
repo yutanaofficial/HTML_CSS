@@ -15,67 +15,28 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <style>
-        body {
-            background-color: #c786a5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: sans-serif;
-        }
+    
+ <script>
+        function openNewWindow(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์ม
 
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
+            // ดึงค่าจากฟอร์ม
+            const form = event.target.form;
+            const firstName = form.firstName.value;
+            const lastName = form.lastName.value;
+            const birthday = form.birthday.value;
+            const gender = form.gender.value;
+            const email = form.email.value;
+            const phone = form.phone.value;
+            const subject = form.subject.value;
 
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+            // สร้าง URL ใหม่ที่มีพารามิเตอร์
+            const url = `data.html?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}&birthday=${encodeURIComponent(birthday)}&gender=${encodeURIComponent(gender)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&subject=${encodeURIComponent(subject)}`;
 
-        .form-group {
-            margin-bottom: 20px;
+            // เปิดหน้าต่างใหม่
+            window.open(url, '_blank');
         }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        input[type="radio"] {
-            margin-right: 5px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    </script>
   </head>
   <body>
     <%= yield %>

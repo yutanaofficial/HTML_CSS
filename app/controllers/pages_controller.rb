@@ -6,9 +6,12 @@ class PagesController < ApplicationController
     puts "=============="
   end
 
-  def about
+  def create
+    session[:form_data] = params
+    redirect_to action: :show
   end
 
-  def contact
+  def show
+    @form_data = session[:form_data]
   end
 end

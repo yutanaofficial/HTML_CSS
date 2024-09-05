@@ -1,0 +1,35 @@
+<h1>Register Form</h1>
+<%= form_with url: forms_create_path, method: :post do %>
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <%= text_field_tag :firstName, nil, id: 'firstName', required: true %>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <%= text_field_tag :lastName, nil, id: 'lastName', required: true %>
+  </div>
+  <div class="form-group">
+    <label for="birthday">Birthday:</label>
+    <%= date_field_tag :birthday, nil, id: 'birthday', required: true %>
+  </div>
+  <div class="form-group">
+    <label>Gender:</label>
+    <%= radio_button_tag :gender, 'male', true %>
+    <%= label_tag :gender_male, 'Male' %>
+    <%= radio_button_tag :gender, 'female' %>
+    <%= label_tag :gender_female, 'Female' %>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <%= email_field_tag :email, nil, id: 'email', required: true %>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <%= tel_field_tag :phone, nil, id: 'phone', required: true %>
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject:</label>
+    <%= select_tag :subject, options_for_select(['Option 1', 'Option 2', 'Option 3']), id: 'subject' %>
+  </div>
+  <button type="submit">Submit</button>
+<% end %>
